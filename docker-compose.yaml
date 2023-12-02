@@ -35,3 +35,12 @@ services:
       /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 2lW8wVwjZosWVaDJIFj -d master -i docker-entrypoint-initdb.d/init.sql;
       echo "All done!";
       '
+
+  rabbitmq:
+    image: "rabbitmq:management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest

@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EDD683A3-26BF-491B-943D-17225ED6A7AC}"
+	ProjectSection(SolutionItems) = preProject
+		ServiceUrls.txt = ServiceUrls.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{34D6D0C3-47C2-4BA0-B598-054379F62260}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlock", "BuildingBlock", "{0C89069D-92DD-4241-A7FA-A0133ACB1388}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{150889AF-FB4D-481D-84EB-4CBF5BB79A6C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Base", "src\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj", "{8354529C-F65A-4AE6-B180-02676BC4CCC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Factory", "src\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj", "{AB33C555-FCA7-42DF-BC77-C595C5B415FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{813B0C11-91E1-4625-8F0D-767FF269C1CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdvertsService", "AdvertsService", "{41D4095B-A24B-45C7-A62F-8B75EC10CE30}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "src\BuildingBlocks\EventBus\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{2BBAD5DA-551F-480C-87D1-449C9BC62C7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VisitRecordService", "VisitRecordService", "{3278E939-1E64-43E0-99F2-881E0BA405C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvertsService.API", "src\Services\VehicleAdvertsService\VehicleAdverts.API\AdvertsService.API.csproj", "{A0AE49A1-E41A-47C7-84F3-8C9A651B7EF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdvertVisitService", "AdvertVisitService", "{BE4368BC-6ACE-44A9-94BB-66E9A149278B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvertVisitService.API", "src\Services\AdvertVisitService\AdvertVisitService.API\AdvertVisitService.API.csproj", "{EF90DF02-1C40-43B1-AD18-25E5D7FAF65D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8354529C-F65A-4AE6-B180-02676BC4CCC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8354529C-F65A-4AE6-B180-02676BC4CCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8354529C-F65A-4AE6-B180-02676BC4CCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8354529C-F65A-4AE6-B180-02676BC4CCC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB33C555-FCA7-42DF-BC77-C595C5B415FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB33C555-FCA7-42DF-BC77-C595C5B415FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB33C555-FCA7-42DF-BC77-C595C5B415FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB33C555-FCA7-42DF-BC77-C595C5B415FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BBAD5DA-551F-480C-87D1-449C9BC62C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BBAD5DA-551F-480C-87D1-449C9BC62C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BBAD5DA-551F-480C-87D1-449C9BC62C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BBAD5DA-551F-480C-87D1-449C9BC62C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0AE49A1-E41A-47C7-84F3-8C9A651B7EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0AE49A1-E41A-47C7-84F3-8C9A651B7EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0AE49A1-E41A-47C7-84F3-8C9A651B7EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0AE49A1-E41A-47C7-84F3-8C9A651B7EF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF90DF02-1C40-43B1-AD18-25E5D7FAF65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF90DF02-1C40-43B1-AD18-25E5D7FAF65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF90DF02-1C40-43B1-AD18-25E5D7FAF65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF90DF02-1C40-43B1-AD18-25E5D7FAF65D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0C89069D-92DD-4241-A7FA-A0133ACB1388} = {34D6D0C3-47C2-4BA0-B598-054379F62260}
+		{150889AF-FB4D-481D-84EB-4CBF5BB79A6C} = {0C89069D-92DD-4241-A7FA-A0133ACB1388}
+		{8354529C-F65A-4AE6-B180-02676BC4CCC0} = {150889AF-FB4D-481D-84EB-4CBF5BB79A6C}
+		{AB33C555-FCA7-42DF-BC77-C595C5B415FC} = {150889AF-FB4D-481D-84EB-4CBF5BB79A6C}
+		{813B0C11-91E1-4625-8F0D-767FF269C1CB} = {34D6D0C3-47C2-4BA0-B598-054379F62260}
+		{41D4095B-A24B-45C7-A62F-8B75EC10CE30} = {813B0C11-91E1-4625-8F0D-767FF269C1CB}
+		{2BBAD5DA-551F-480C-87D1-449C9BC62C7E} = {150889AF-FB4D-481D-84EB-4CBF5BB79A6C}
+		{3278E939-1E64-43E0-99F2-881E0BA405C4} = {813B0C11-91E1-4625-8F0D-767FF269C1CB}
+		{A0AE49A1-E41A-47C7-84F3-8C9A651B7EF2} = {41D4095B-A24B-45C7-A62F-8B75EC10CE30}
+		{BE4368BC-6ACE-44A9-94BB-66E9A149278B} = {813B0C11-91E1-4625-8F0D-767FF269C1CB}
+		{EF90DF02-1C40-43B1-AD18-25E5D7FAF65D} = {BE4368BC-6ACE-44A9-94BB-66E9A149278B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69A2AD25-5A00-4D74-BB77-945447C01FAF}
+	EndGlobalSection
+EndGlobal

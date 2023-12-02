@@ -1,0 +1,2 @@
+AdvertsService.API : http://localhost:5165
+AdvertsVisitService.API : http://localhost:5244
