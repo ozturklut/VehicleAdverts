@@ -12,7 +12,6 @@
             Success = false;
             Message = string.Empty;
             DetailMessage = string.Empty;
-            Data = new T();
         }
     }
 }

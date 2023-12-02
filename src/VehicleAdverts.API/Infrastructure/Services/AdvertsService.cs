@@ -1,12 +1,10 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using VehicleAdverts.API.Core.Domain.Entities;
 using VehicleAdverts.API.Core.Domain.Models.Request.Adverts;
+using VehicleAdverts.API.Core.Domain.Models.Request.Base;
 using VehicleAdverts.API.Core.Domain.Models.Response.Adverts;
 using VehicleAdverts.API.Core.Domain.Models.Response.Base;
 using VehicleAdverts.API.Infrastructure.Services.Abstract;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace VehicleAdverts.API.Infrastructure.Services
 {
@@ -14,7 +12,6 @@ namespace VehicleAdverts.API.Infrastructure.Services
     {
         private readonly IConfiguration _configuration;
 
-        // REVIEW: Dependency Injection (Bağımlılık Enjeksiyonu) için constructor kullanımı
         public AdvertsService(IConfiguration configuration) : base(configuration)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
@@ -36,41 +33,94 @@ namespace VehicleAdverts.API.Infrastructure.Services
 
                 using (SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
                 {
-                    totalRecords = await con.ExecuteScalarAsync<int>(countSql, requestModel);
-                }
+                    var totalRecordsResult = await con.QueryAsync<int>(countSql, requestModel);
 
-                if (requestModel.PageNumber != null && requestModel.PageSize != null && requestModel.PageSize > 0)
-                {
-                    totalPages = (int)Math.Ceiling((double)totalRecords / (double)requestModel.PageSize);
-                }
+                    totalRecords = totalRecordsResult.Single();
 
-                var sql = $@"SELECT
-                Id,
-                ModelName,
-                Category,
-                Year,
-                Price,
-                Title,
-                Date,
-                Km,
-                Color,
-                Gear,
-                Fuel,
-                FirstPhoto
-                FROM Adverts WITH(NOLOCK) 
-                {whereFilterSql}
-                {orderBySql}
-                {pagingSql}";
+                    if (requestModel.PageNumber != null && requestModel.PageSize != null && requestModel.PageSize > 0)
+                    {
+                        totalPages = (int)Math.Ceiling((double)totalRecords / (double)requestModel.PageSize);
+                    }
 
-                using (SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-                {
+                    var sql = $@"SELECT
+                    Id,
+                    ModelName,
+                    Category,
+                    Year,
+                    Price,
+                    Title,
+                    Date,
+                    Km,
+                    Color,
+                    Gear,
+                    Fuel,
+                    FirstPhoto
+                    FROM Adverts WITH(NOLOCK) 
+                    {whereFilterSql}
+                    {orderBySql}
+                    {pagingSql}";
+
+
                     var result = await con.QueryAsync<GetAllAdvertsItem>(sql, requestModel);
 
+                    responseModel.Data = new GetAllAdvertsResponseModel();
+                    
                     responseModel.Data.PageNumber = requestModel.PageNumber;
                     responseModel.Data.PageSize = requestModel.PageSize;
                     responseModel.Data.TotalPages = totalPages;
                     responseModel.Data.TotalRecords = totalRecords;
                     responseModel.Data.Adverts = result.ToList();
+                    responseModel.Success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                responseModel.Success = false;
+                responseModel.Message = "An unexpected error occurred.";
+                responseModel.DetailMessage = ex.Message;
+            }
+
+            return responseModel;
+        }
+
+        public async Task<ApiBaseResponseModel<GetAdvertByIdResponseModel>> GetAdvertById(BaseByIdRequestModel requestModel)
+        {
+            var responseModel = new ApiBaseResponseModel<GetAdvertByIdResponseModel>();
+
+            try
+            {
+
+                var sql = $@"SELECT
+                Id,
+                MemberId,
+                CityId,
+                CityName,
+                TownId,
+                TownName,
+                ModelId,
+                ModelName,
+                Year,
+                Price,
+                Title,
+                Date,
+                CategoryId,
+                Category,
+                Km,
+                Color,
+                Gear,
+                Fuel,
+                FirstPhoto,
+                SecondPhoto,
+                UserInfo,
+                Text
+                FROM Adverts WITH(NOLOCK)
+                WHERE Id = @Id";
+
+                using (SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+                {
+                    var result = await con.QueryAsync<GetAdvertByIdResponseModel>(sql, requestModel);
+
+                    responseModel.Data = result.Single();
                     responseModel.Success = true;
                 }
             }
